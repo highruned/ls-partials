@@ -1,11 +1,11 @@
-===
+=======
 cms:page_list
-===
+=======
 
 Outputs a unordered list of pages.
 
 Usage
-================::
+================:
 	<?
 		$home_page = Cms_Page::create()->find_by_url('/');
 
