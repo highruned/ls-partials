@@ -1,0 +1,27 @@
+<?
+  extract(array_merge(array(
+    'list' => array(),
+    'thumb_width' => 50,
+    'thumb_height' => 50,
+    'fullsize_width' => 250,
+    'fullsize_height' => 250
+  ), $params));
+  
+  if($list instanceof Db_DataCollection)
+    $list = $list->as_array();
+  
+  if(count($list)):
+    $thumb_url = $list[0]->getThumbnailPath($thumb_width, $thumb_height);
+    $fullsize_url = $list[0]->getThumbnailPath($fullsize_width, $fullsize_height);
+?>
+  <img id="image_full" src="<?= $fullsize_url ?>" alt="" />
+  <?
+    if(count($list) > 1):
+      foreach($list as $i => $item):
+        $thumb_url = $item->getThumbnailPath($thumb_width, $thumb_height);
+        $fullsize_url = $item->getThumbnailPath($fullsize_width, $fullsize_height);
+  ?>
+    <a href="javascript:;" onclick="javascript:$('image_full').set('src', $(this).getElement('img').get('alt'));"><img class="image_thumb" src="<?= $thumb_url ?>" title="Preview" alt="<?= $fullsize_url ?>" /></a>
+    <? endforeach ?>
+  <? endif ?>
+<? endif ?>​

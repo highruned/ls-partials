@@ -81,5 +81,4 @@ If ``true``, it will output any specified anchor classes.
 
 'render_after' => null
 
-'return_output' => false
-Currently does nothing.
+'list' => array()

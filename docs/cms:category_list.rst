@@ -2,7 +2,7 @@
 cms:category_list
 =======
 
-Outputs a unordered list of categories.
+Outputs an unordered list of categories.
 
 Usage
 ================
@@ -79,3 +79,5 @@ If ``true``, it will output any specified anchor classes.
 'render_after' => null
 
 'current_url' => null
+
+'list' => array()

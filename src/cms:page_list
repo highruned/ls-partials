@@ -1,5 +1,6 @@
 <?
   extract(array_merge(array(
+	'list' => array(),
     'return_output' => false,
     'use_anchor_classes' => false,
     'anchor_default_class' => '',
