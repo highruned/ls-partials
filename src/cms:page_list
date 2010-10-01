@@ -1,5 +1,6 @@
 <?
   extract(array_merge(array(
+    'return_output' => false,
     'use_anchor_classes' => false,
     'anchor_default_class' => '',
     'anchor_current_class' => 'current',
@@ -14,34 +15,37 @@
     'item_delimiter' => '|',
     'show_item_delimiter' => false,
     'use_list_classes' => true,
-    'parent_page' => null,
+    'parent' => null,
     'parent_list_class' => '',
     'parent_list_id' => '',
     'child_list_class' => '',
     'insert_before' => null,
     'insert_after' => null,
     'render_before' => null,
-    'render_after' => null,
-    'return_output' => false
+    'render_after' => null
   ), $params));
+  
+  if($list instanceof Db_DataCollection)
+    $list = $list->as_array();
 ?>
 <? if($return_output) ob_start() ?>
-<ul id="<?= !$parent_page ? $parent_list_id : null ?>" class="<? if($use_list_classes): ?><?= !$parent_page ? $parent_list_class : null ?> <?= $parent_page ? $child_list_class : null ?><? endif ?>">
+<? if(count($list)): ?>
+<ul id="<?= !$parent ? $parent_list_id : null ?>" class="<? if($use_list_classes): ?><?= !$parent ? $parent_list_class : null ?> <?= $parent ? $child_list_class : null ?><? endif ?>">
   <?= $insert_before ?>
   <? if($render_before) $this->render_partial($render_before[0], $render_before[1]) ?>
   
-  <? foreach($list as $i => $page): ?>
+  <? foreach($list as $i => $item): ?>
   <?
     $is_first = ($i == 0);
     $is_last = ($i == count($list) - 1);
-    $is_current = ($this->page->url == $page->url);
+    $is_current = ($this->page->url == $item->url);
   ?>
 
   <li class="<? if($use_item_classes): ?><?= $item_default_class ?> <?= $is_current ? $item_current_class : null ?> <?= $is_first ? $item_first_class : null ?> <?= $is_last ? $item_last_class : null ?><? endif ?>">
-    <a class="<? if($use_anchor_classes): ?><?= $anchor_default_class ?> <?= $is_current ? $item_current_class : null ?> <?= $is_first ? $item_first_class : null ?> <?= $is_last ? $item_last_class : null ?><? endif ?>" href="<?= $page->url ?>" title="View <?= h($page->navigation_label()) ?>"><?= h($page->navigation_label()) ?></a> <?= $show_item_delimiter && !$is_last ? $item_delimiter : null ?>
-    <? if($child_list = $page->navigation_subpages()): ?>
+    <a class="<? if($use_anchor_classes): ?><?= $anchor_default_class ?> <?= $is_current ? $item_current_class : null ?> <?= $is_first ? $item_first_class : null ?> <?= $is_last ? $item_last_class : null ?><? endif ?>" href="<?= $item->url ?>" title="View <?= h($item->navigation_label()) ?>"><?= h($item->navigation_label()) ?></a> <?= $show_item_delimiter && !$is_last ? $item_delimiter : null ?>
+    <? if($child_list = $item->navigation_subpages()): ?>
       <? unset($params['render_before'], $params['render_after'], $params['insert_before'], $params['insert_after']) ?>
-      <? if($show_item_children) $this->render_partial('cms:page_list', array_merge($params, array('list' => $child_list, 'parent_page' => $page))) ?>
+      <? if($show_item_children) $this->render_partial('cms:page_list', array_merge($params, array('list' => $child_list, 'parent' => $item))) ?>
     <? endif ?>
   </li>  
   <? endforeach ?>
@@ -49,4 +53,5 @@
   <?= $insert_after ?>
   <? if($render_after) $this->render_partial($render_after[0], $render_after[1]) ?>
 </ul>
-<? if($return_output) { $content = ob_get_contents(); ob_end_clean(); return $content; } ?>​​​​​​​​​​​​​​​​​
+<? endif ?>
+<? if($return_output) { $content = ob_get_contents(); ob_end_clean(); return $content; } ?>​​​​​​​​​​​​​​​​​​​​​​​​​​​​
