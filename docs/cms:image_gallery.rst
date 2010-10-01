@@ -8,7 +8,6 @@ Usage
 ================
 
 ::
-
 	<? $this->render_partial('cms:image_gallery', array('list' => $product->images)) ?>
 
 Options
