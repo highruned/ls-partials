@@ -15,8 +15,9 @@ Usage
 
 Copyright
 ================
-
+----------
 PHP CSS Browser Selector v0.0.1
+----------
 
 Bastian Allgeier (http://bastian-allgeier.de)
 
