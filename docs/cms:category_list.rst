@@ -6,6 +6,9 @@ Outputs an unordered list of categories.
 
 Usage
 ================
+
+::
+
 	<?
 		$this->render_partial('shop:category_list', array(
 			'parent_list_class' => 'categories',

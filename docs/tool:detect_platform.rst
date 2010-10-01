@@ -9,6 +9,8 @@ Taken from http://bastian-allgeier.de/css_browser_selector
 Usage
 ================
 
+::
+
 	<body class="<?= $this->render_partial('tool:detect_platform') ?>">
 
 Copyright
