@@ -6,6 +6,7 @@ Outputs a gallery containing one large image, and thumbnails below.
 
 Usage
 ================
+:
 	<? $this->render_partial('cms:image_gallery', array('list' => $product->images)) ?>
 
 Options
