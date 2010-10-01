@@ -7,7 +7,7 @@ Outputs a list of platform variables to use with CSS selectors.
 Taken from http://bastian-allgeier.de/css_browser_selector
 
 Usage
-================:
+================
 
 	<body class="<?= $this->render_partial('tool:detect_platform') ?>">
 
