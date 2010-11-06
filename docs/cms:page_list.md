@@ -24,7 +24,7 @@ Outputs a unordered list of pages.
 
 *Currently does nothing.*
 
-*****
+***
 
 ### use_anchor_classes
 
