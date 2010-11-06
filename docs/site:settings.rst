@@ -7,7 +7,7 @@ Returns an array of settings to use throughout templates, partials, and pages.
 Usage
 ================
 
-.. sourcecode:: php
+code-block:: php
 
 	<?
 		$charset = $this->render_partial('site:settings')->charset;
