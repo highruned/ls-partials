@@ -19,8 +19,8 @@ Outputs a unordered list of pages.
 return_output
 
 
-    | type: **bool**
-    | default: **false**
+| type: **bool**
+| default: **false**
 
 Currently does nothing.
 
@@ -28,8 +28,8 @@ Currently does nothing.
 
 ### use_anchor_classes
 
-    | type: *bool*
-    | default: *false*
+| type: **bool**
+| default: **false**
 
 If `true`, it will output any specified anchor classes.
 
