@@ -1,0 +1,47 @@
+<?
+  $this->render_partial('function:array_merge_recursive_distinct');
+ 
+  extract(array_merge_recursive_distinct(array(
+    'type' => 'js',
+    'files' => array()
+  ), $params));
+ 
+  $data = '';
+  $temp_name = md5(implode('&', $files)) . '.' . $type;
+  $temp_path = PATH_APP . '/resources/cache/' . $temp_name;
+ 
+  if(file_exists($temp_path)) {
+    $temp_date = filemtime($temp_path);
+    $changed = false;
+   
+    foreach($files as $file)
+      if(filemtime(PATH_APP . $file) > $temp_date)
+        $changed = true;
+   
+    if(!$changed)
+      return '/resources/cache/' . $temp_name;
+  }
+ 
+  foreach($files as $file) {
+    $ext = explode('.', $file);
+    $type = end($ext);
+    $file_path = PATH_APP . $file;
+    
+    if(!file_exists($file_path))
+      continue;
+    
+    $f1 = fopen($file_path, 'r');
+    
+    if(!$size = filesize($file_path))
+      continue;
+    
+    $data .= fread($f1, $size) . "\n";
+    fclose($f1);
+  }
+
+  $f1 = fopen($temp_path, 'w');
+  flock($f1, LOCK_EX);
+  fwrite($f1, $data);
+  fclose($f1);
+ 
+  return '/resources/cache/' . $temp_name;
