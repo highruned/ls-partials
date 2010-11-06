@@ -38,7 +38,7 @@ use_anchor_classes
     | type: **Boolean**
     | default: **false**
 
-If ``true``, it will output any specified anchor classes.
+If `true`, it will output any specified anchor classes.
 
 *****
 
