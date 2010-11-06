@@ -19,6 +19,7 @@ Outputs a unordered list of pages.
 #### return_output
 
 **type:** `bool`
+
 **default:** `false`
 
 *Currently does nothing.*
