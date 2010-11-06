@@ -61,10 +61,26 @@ function css_browser_selector($ua=null) {
     } else if(strstr($ua, 'x11') || strstr($ua, 'linux')) {
         $b[] = 'linux';    
     }
+
+	$not_ie = true;
+	$not_ie6 = true;
+
+	foreach($b as $c)
+	{
+		if(stristr($c, "ie ie"))
+			$not_ie = false;
+
+		if(stristr($c, "ie6"))
+			$not_ie6 = false;
+	}
+	
+	if($not_ie)
+		$b[] = "not-ie";
         
+	if($not_ie6)
+		$b[] = "not-ie6";
+
     return join(' ', $b);
 }
   
-echo css_browser_selector();
-
-?>​
+return css_browser_selector();
