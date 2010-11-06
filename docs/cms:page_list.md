@@ -24,8 +24,8 @@ Outputs a unordered list of pages.
 
 ---
 
-#### use_anchor_classes:
-> type: `bool` 
+#### use_anchor_classes
+> type: `bool`
 > default: `false`
 
 *If `true`, it will output any specified anchor classes.*
