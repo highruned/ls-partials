@@ -1,13 +1,8 @@
-=======
-cms:page_list
-=======
+# cms:page_list
 
 Outputs a unordered list of pages.
 
-Usage
-================
-
-::
+## Usage
 
 	<?
 		$home_page = Cms_Page::create()->find_by_url('/');
@@ -19,23 +14,21 @@ Usage
 		));
 	?>
 
-Options
-================
+### Options
 
 return_output
---------
 
-    | type: *Boolean*
-    | default: *false*
+
+    | type: **bool**
+    | default: **false**
 
 Currently does nothing.
 
 *****
 
-use_anchor_classes
---------
+### use_anchor_classes
 
-    | type: *Boolean*
+    | type: *bool*
     | default: *false*
 
 If `true`, it will output any specified anchor classes.
