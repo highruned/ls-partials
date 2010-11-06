@@ -17,18 +17,15 @@ Outputs a unordered list of pages.
 ### Options
 
 #### return_output
-
 > type: `bool`
-
 > default: `false`
 
 *Currently does nothing.*
 
 ---
 
-#### use_anchor_classes
-:
-> type: `bool`
+#### use_anchor_classes:
+> type: `bool` 
 > default: `false`
 
 *If `true`, it will output any specified anchor classes.*
