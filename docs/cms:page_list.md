@@ -25,8 +25,8 @@ Options
 return_output
 --------
 
-    | type: **Boolean**
-    | default: **false**
+    | type: *Boolean*
+    | default: *false*
 
 Currently does nothing.
 
@@ -35,8 +35,8 @@ Currently does nothing.
 use_anchor_classes
 --------
 
-    | type: **Boolean**
-    | default: **false**
+    | type: *Boolean*
+    | default: *false*
 
 If `true`, it will output any specified anchor classes.
 
