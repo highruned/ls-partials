@@ -18,13 +18,17 @@ Outputs a unordered list of pages.
 > default: `false`
 
 *Currently does nothing.*
+
 ---
+
 ### use_anchor_classes
 > type: `bool`  
 > default: `false`
 
 *If `true`, it will output any specified anchor classes.*
+
 ---
+
 'anchor_default_class' => ''
 
 'anchor_current_class' => 'current'

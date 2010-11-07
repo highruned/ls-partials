@@ -12,7 +12,9 @@ Outputs a gallery containing one large image, and thumbnails below.
 > default: `50`
 
 *The width of each thumbnail.*
+
 ---
+
 ### thumb_height
 > type: `Integer`  
 > default: `50`
