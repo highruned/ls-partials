@@ -2,6 +2,7 @@
 Returns an array of settings to use throughout templates, partials, and pages.
 
 ## Usage
+
 	<?
 		$charset = $this->render_partial('site:settings')->charset;
 		$meta_description = ($meta_description = strlen(h($this->page->description)) > 0) ? $meta_description : $this->render_partial('site:settings')->default_meta_description;
