@@ -1,14 +1,7 @@
-=======
-cms:category_list
-=======
-
+# cms:category_list
 Outputs an unordered list of categories.
 
-Usage
-================
-
-::
-
+## Usage
 	<?
 		$this->render_partial('shop:category_list', array(
 			'parent_list_class' => 'categories',
@@ -16,29 +9,18 @@ Usage
 		));
 	?>
 
-Options
-================
+## Options
 
-return_output
---------
-
-    | type: **Boolean**
-    | default: **false**
-
-Currently does nothing.
-
-*****
-
-use_anchor_classes
---------
-
-    | type: **Boolean**
-    | default: **false**
-
-If ``true``, it will output any specified anchor classes.
-
-*****
-
+### return_output
+> type: `bool`  
+> default: `false`
+*Currently does nothing.*
+---
+###use_anchor_classes
+> type: `bool`  
+> default: `false`
+*If `true`, it will output any specified anchor classes.*
+---
 'anchor_default_class' => ''
 
 'anchor_current_class' => 'current'

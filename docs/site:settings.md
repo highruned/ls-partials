@@ -1,14 +1,7 @@
-=======
-site:settings
-=======
-
+# site:settings
 Returns an array of settings to use throughout templates, partials, and pages.
 
-Usage
-================
-
-::
-
+## Usage
 	<?
 		$charset = $this->render_partial('site:settings')->charset;
 		$meta_description = strlen(h($this->page->description)) > 0 ? h($this->page->description) : $this->render_partial('site:settings')->default_meta_description;

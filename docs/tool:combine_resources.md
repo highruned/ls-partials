@@ -1,14 +1,7 @@
-=======
-tool:combine_resources
-=======
-
+# tool:combine_resources
 Combines resources (CSS, JS) into a cached file.
 
-Usage
-================
-
-::
-
+## Usage
 	<link href="<?= root_url($this->render_partial('tool:combine_resources', array(
 		'type' => 'css',
 		'files' => array(
