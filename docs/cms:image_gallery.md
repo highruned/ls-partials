@@ -8,7 +8,7 @@ Outputs a gallery containing one large image, and thumbnails below.
 ### thumb_width
 #### return_output
 
-> type: `Integer`  
+> type: `int`  
 > default: `50`
 
 *The width of each thumbnail.*
@@ -16,7 +16,7 @@ Outputs a gallery containing one large image, and thumbnails below.
 ---
 
 ### thumb_height
-> type: `Integer`  
+> type: `int`  
 > default: `50`
 
 *The height of each thumbnail.*
