@@ -5,12 +5,9 @@
   'default_meta_keywords' => "",
   'product_path' => '/product',
   'category_path' => '/category',
-  'designer_path' => '/designer',
   'cart_path' => '/cart',
   'checkout_path' => '/checkout',
   'home_products_per_page' => 15,
-  'home_product_max_title_length' => 9,
-  'home_product_max_description_length' => 23,
   'search_products_per_page' => 6,
   'product_list_default_thumb_path' => 'resources/images/product-list-default-thumb.png',
   'product_detail_default_thumb_path' => 'resources/images/product-detail-default-thumb.png'
