@@ -4,20 +4,20 @@ Outputs a unordered list of pages.
 
 ## Usage
 
-	<?
-		$home_page = Cms_Page::create()->find_by_url('/');
+  <?
+    $home_page = Cms_Page::create()->find_by_url('/');
 
-		$this->render_partial('cms:page_list', array(
-		  'list' => array_merge(array($home_page), $home_page->navigation_subpages()),
-		  'parent_list_class' => 'pages',
-		  'item_default_class' => 'item'
-		));
-	?>
+    $this->render_partial('cms:page_list', array(
+      'list' => array_merge(array($home_page), $home_page->navigation_subpages()),
+      'parent_list_class' => 'pages',
+      'item_default_class' => 'item'
+    ));
+  ?>
 
 ### Options
 
 #### return_output
-> type: `bool`
+> type: `bool`  
 > default: `false`
 
 *Currently does nothing.*
@@ -25,7 +25,7 @@ Outputs a unordered list of pages.
 ---
 
 #### use_anchor_classes
-> type: `bool`
+> type: `bool`  
 > default: `false`
 
 *If `true`, it will output any specified anchor classes.*
