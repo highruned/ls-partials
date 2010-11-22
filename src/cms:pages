@@ -1,6 +1,6 @@
 <?
   extract(array_merge(array(
-	'list' => array(),
+  'list' => array(),
     'return_output' => false,
     'use_anchor_classes' => false,
     'anchor_default_class' => '',
@@ -23,25 +23,13 @@
     'insert_before' => null,
     'insert_after' => null,
     'render_before' => null,
-    'render_after' => null,
-    'current_url' => null
+    'render_after' => null
   ), $params));
-?>
-<? if($return_output) ob_start() ?>
-
-<?  
-  if(!isset($current_url))
-    $category_url = null;
-  
-  if(!isset($list))
-    $list = isset($parent) ? 
-      $parent->list_children('front_end_sort_order') : 
-      Shop_Category::create()->list_root_children('front_end_sort_order');
   
   if($list instanceof Db_DataCollection)
     $list = $list->as_array();
 ?>
-
+<? if($return_output) ob_start() ?>
 <? if(count($list)): ?>
 <ul id="<?= !$parent ? $parent_list_id : null ?>" class="<? if($use_list_classes): ?><?= !$parent ? $parent_list_class : null ?> <?= $parent ? $child_list_class : null ?><? endif ?>">
   <?= $insert_before ?>
@@ -51,15 +39,20 @@
   <?
     $is_first = ($i == 0);
     $is_last = ($i == count($list) - 1);
-    $is_current = ($current_url == $item->url_name);
+    $is_current = ($this->page->url == $item->url);
   ?>
-  
+
   <li class="<? if($use_item_classes): ?><?= $item_default_class ?> <?= $is_current ? $item_current_class : null ?> <?= $is_first ? $item_first_class : null ?> <?= $is_last ? $item_last_class : null ?><? endif ?>">
-    <a class="<? if($use_anchor_classes): ?><?= $anchor_default_class ?> <?= $is_current ? $item_current_class : null ?> <?= $is_first ? $item_first_class : null ?> <?= $is_last ? $item_last_class : null ?><? endif ?>" href="<?= $item->page_url('/category') ?>" title="View all products of <?= h($item->name) ?>"><?= h($item->name) ?></a>
+    <a class="<? if($use_anchor_classes): ?><?= $anchor_default_class ?> <?= $is_current ? $item_current_class : null ?> <?= $is_first ? $item_first_class : null ?> <?= $is_last ? $item_last_class : null ?><? endif ?>" href="<?= $item->url ?>" title="View <?= h($item->navigation_label()) ?>"><?= h($item->navigation_label()) ?></a> <?= $show_item_delimiter && !$is_last ? $item_delimiter : null ?>
+    <? if($child_list = $item->navigation_subpages()): ?>
       <? unset($params['render_before'], $params['render_after'], $params['insert_before'], $params['insert_after']) ?>
-      <? if($show_item_children) $this->render_partial('shop:category_list', array_merge($params, array_merge($params, array('parent' => $item)))) ?>
-    </li>
+      <? if($show_item_children) $this->render_partial('cms:pages', array_merge($params, array('list' => $child_list, 'parent' => $item))) ?>
+    <? endif ?>
+  </li>  
   <? endforeach ?>
-  </ul>
+  
+  <?= $insert_after ?>
+  <? if($render_after) $this->render_partial($render_after[0], $render_after[1]) ?>
+</ul>
 <? endif ?>
-<? if($return_output) { $content = ob_get_contents(); ob_end_clean(); return $content; } ?>​
+<? if($return_output) { $content = ob_get_contents(); ob_end_clean(); return $content; } ?>​​​​​​​​​​​​​​​​​​​​​​​​​​​​

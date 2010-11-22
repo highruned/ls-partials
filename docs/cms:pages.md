@@ -1,16 +1,16 @@
-# cms:page_list
+# cms:pages
 Outputs a unordered list of pages.
 
 ## Usage
-	<?
-		$home_page = Cms_Page::create()->find_by_url('/');
+  <?
+    $home_page = Cms_Page::create()->find_by_url('/');
 
-		$this->render_partial('cms:page_list', array(
-			'list' => array_merge(array($home_page), $home_page->navigation_subpages()),
-			'parent_list_class' => 'pages',
-			'item_default_class' => 'item'
-		));
-	?>
+    $this->render_partial('cms:pages', array(
+      'list' => array_merge(array($home_page), $home_page->navigation_subpages()),
+      'parent_list_class' => 'pages',
+      'item_default_class' => 'item'
+    ));
+  ?>
 
 ## Options
 ### return_output
